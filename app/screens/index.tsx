@@ -1,11 +1,12 @@
 
 import { Text, View } from "react-native";
 import { styles } from "./style";
+import { Header } from "../components/Header";
 
 export function HomeScreen2() {
   return ( 
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
+      <Header/>
     </View>
   )
 }

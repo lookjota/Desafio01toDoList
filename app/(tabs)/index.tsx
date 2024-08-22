@@ -1,10 +1,10 @@
-import { Image, Text, StyleSheet, Platform, ActivityIndicator, View, StatusBar } from 'react-native';
 
 
 import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
 import { theme } from '../theme';
 import { HomeScreen2 } from '../screens';
 import { Loading } from '../components/Loading';
+import { StatusBar } from 'expo-status-bar';
 
 export default function HomeScreen() {
 
