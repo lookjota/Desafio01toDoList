@@ -4,7 +4,7 @@ import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/in
 import { theme } from '../theme';
 import { HomeScreen2 } from '../screens';
 import { Loading } from '../components/Loading';
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'react-native';
 
 export default function HomeScreen() {
 
@@ -17,7 +17,11 @@ export default function HomeScreen() {
   return (
     <>
       {fontsLoaded ? <HomeScreen2/> : <Loading/>}
-      <StatusBar style="auto"/>
+      <StatusBar 
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
     </>
   );
 }
