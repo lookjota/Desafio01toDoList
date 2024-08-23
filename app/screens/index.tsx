@@ -1,9 +1,9 @@
 
-import { Alert, FlatList, Text, View } from "react-native";
+import { Alert, FlatList, Text, TextInput, View } from "react-native";
 import { styles } from "./style";
 import { Header } from "../components/Header";
 import { Task } from "../components/Task"; 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { TaskDTO } from "../dtos/TaskDTO";
 import { Empty } from "../components/Empty";
 import { uuid } from "../ultils/uuid";
@@ -12,6 +12,7 @@ export function HomeScreen2() {
 
   const [tasks, setTasks] = useState<TaskDTO[]>([])
   const [newTask, setNewTask] = useState('')
+  const newTaskInputRef = useRef<TextInput>(null)
 
   function handleTaskAdd() {
     if(newTask !== '' && newTask.length >= 5) {
@@ -20,6 +21,8 @@ export function HomeScreen2() {
         {id: uuid(), isCompleted: false, title: newTask.trim() },
       ])
       setNewTask('')
+
+      newTaskInputRef.current?.blur()
     }
   }
 
@@ -54,6 +57,7 @@ export function HomeScreen2() {
   return ( 
     <View style={styles.container}>
       <Header 
+        inputRef={newTaskInputRef}
         task={newTask} 
         onChangeText={setNewTask}
         onPress={handleTaskAdd}  
