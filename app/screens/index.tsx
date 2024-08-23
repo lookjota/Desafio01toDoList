@@ -1,10 +1,16 @@
 
-import { Text, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import { styles } from "./style";
 import { Header } from "../components/Header";
 import { Task } from "../components/Task"; 
+import { useState } from "react";
+import { TaskDTO } from "../dtos/TaskDTO";
+import { Empty } from "../components/Empty";
 
 export function HomeScreen2() {
+
+  const [tasks, setTasks] = useState<TaskDTO[]>([])
+
   return ( 
     <View style={styles.container}>
       <Header/>
@@ -23,9 +29,20 @@ export function HomeScreen2() {
               </View>
           </View>
         </View>
-        <Task title='Estudar Reacct Native' isCompleted />
-        <Task title='Estudar Reacct Native' isCompleted={false} />
-        <Task title='Estudar Reacct Native' isCompleted />
+
+        <FlatList 
+          data={tasks}
+          keyExtractor={(tasks) => tasks.id!}
+          renderItem={({ item }) => (
+            <Task 
+              key={item.id}
+              isCompleted={item.isCompleted}
+              title={item.title}
+            />
+          )}
+          ListEmptyComponent={<Empty />}
+        />
+
       </View>
     </View>
   )
