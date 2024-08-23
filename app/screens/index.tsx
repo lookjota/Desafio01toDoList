@@ -2,6 +2,7 @@
 import { Text, View } from "react-native";
 import { styles } from "./style";
 import { Header } from "../components/Header";
+import { Task } from "../components/Task"; 
 
 export function HomeScreen2() {
   return ( 
@@ -22,6 +23,9 @@ export function HomeScreen2() {
               </View>
           </View>
         </View>
+        <Task title='Estudar Reacct Native' isCompleted />
+        <Task title='Estudar Reacct Native' isCompleted={false} />
+        <Task title='Estudar Reacct Native' isCompleted />
       </View>
     </View>
   )
